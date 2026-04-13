@@ -20,6 +20,19 @@
       "category": "development",
       "tags": ["prd", "tasks", "agents", "orchestration", "brownfield"],
       "keywords": ["prd", "parse-request", "task-creation", "multi-agent", "brownfield"]
+    },
+    {
+      "name": "nter-usage",
+      "source": "./plugins/nter-usage",
+      "description": "Personal utilities. Currently includes the claude-usage dashboard launcher.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Francisco Segura",
+        "url": "https://gitlab.nfqsolutions.es/francisco.segura/nter-fran"
+      },
+      "category": "utilities",
+      "tags": ["utilities", "dashboard", "usage"],
+      "keywords": ["claude-usage", "dashboard", "utilities"]
     }
   ]
 }

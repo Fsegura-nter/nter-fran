@@ -1,0 +1,14 @@
+{
+  "name": "nter-usage",
+  "version": "1.0.0",
+  "description": "Personal utilities: claude-usage dashboard launcher.",
+  "author": {
+    "name": "Francisco Segura",
+    "email": "francisco.segura@nfqsolutions.es",
+    "url": "https://gitlab.nfqsolutions.es/francisco.segura/nter-fran"
+  },
+  "capabilities": {
+    "skills": true,
+    "agents": false
+  }
+}

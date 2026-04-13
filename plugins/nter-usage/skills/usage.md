@@ -1,4 +1,4 @@
-# nter-nexus:usage
+# nter-usage:usage
 
 Launch the claude-usage dashboard on port 9090. Auto-closes after 10 minutes.
 
@@ -44,7 +44,7 @@ After launching, output exactly:
 
 ```
 Dashboard running at http://localhost:9090
-Auto-closes in 10 minutes. Run /nter-nexus:usage again to reset the timer.
+Auto-closes in 10 minutes. Run /nter-usage:usage again to reset the timer.
 ```
 
 The browser opens automatically.
