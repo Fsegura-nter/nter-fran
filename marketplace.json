@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nterfran",
+  "version": "1.0.0",
+  "description": "Francisco Segura's personal plugin marketplace",
+  "owner": {
+    "name": "Francisco Segura",
+    "email": "francisco.segura@nfqsolutions.es"
+  },
+  "plugins": [
+    {
+      "name": "nter-nexus",
+      "source": "./plugins/nter-nexus",
+      "description": "PRD-to-tasks pipeline. Reads functional documents from Google Drive, orchestrates a multi-agent pipeline (Clara → Arco → Forge → Pixel → Estela → Finally), and creates structured tasks in your task manager.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Francisco Segura",
+        "url": "https://gitlab.nfqsolutions.es/francisco.segura/nter-fran"
+      },
+      "category": "development",
+      "tags": ["prd", "tasks", "agents", "orchestration", "brownfield"],
+      "keywords": ["prd", "parse-request", "task-creation", "multi-agent", "brownfield"]
+    }
+  ]
+}

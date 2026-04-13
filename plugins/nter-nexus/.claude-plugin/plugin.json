@@ -1,0 +1,14 @@
+{
+  "name": "nter-nexus",
+  "version": "1.0.0",
+  "description": "PRD-to-tasks pipeline: reads functional documents from Google Drive, orchestrates a multi-agent pipeline, and creates structured tasks in your task manager.",
+  "author": {
+    "name": "Francisco Segura",
+    "email": "francisco.segura@nfqsolutions.es",
+    "url": "https://gitlab.nfqsolutions.es/francisco.segura/nter-fran"
+  },
+  "capabilities": {
+    "skills": true,
+    "agents": true
+  }
+}
