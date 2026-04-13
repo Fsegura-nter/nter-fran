@@ -93,6 +93,20 @@ Report:
 Start mode: {WARM — scan artifacts reused | COLD — running fresh scan}
 ```
 
+### P6: Write workspace.md
+
+Write `{STATE_DIR}/00-workspace.md` before launching any agents:
+```
+WORKSPACE: {current directory absolute path}
+BACK:      {absolute back path}
+FRONT:     {absolute front path}
+STACK_BACKEND:  {stack_backend}
+STACK_FRONTEND: {stack_frontend}
+STATE_DIR: {absolute STATE_DIR path}
+```
+
+All agents read their STATE_DIR from this file. It must exist before Phase 1 starts.
+
 ---
 
 ## Phase 1 — Parallel analysis
@@ -161,16 +175,6 @@ Read `01-clara-review.md` and extract `READINESS`:
 ---
 
 ## Phase 2 — Architecture (Arco)
-
-Write `{STATE_DIR}/00-workspace.md`:
-```
-WORKSPACE: {current directory}
-BACK:      {absolute back path}
-FRONT:     {absolute front path}
-STACK_BACKEND:  {stack_backend}
-STACK_FRONTEND: {stack_frontend}
-STATE_DIR: {STATE_DIR absolute path}
-```
 
 Invoke Arco agent from `agents/arco.md` as subagent.
 
@@ -336,7 +340,7 @@ Create in order:
 For each `BACK-N` block in `03-forge-breakdown.md`:
 
 ```bash
-cat > /tmp/nexus_card.json << 'EOF'
+cat > .nter-nexus/state/treyit_card.json << 'EOF'
 {
   "title": "{SCOPE of BACK-N}",
   "description": "{HTML description — see format below}",
@@ -348,7 +352,7 @@ EOF
 curl -s -X POST \
   -H "Authorization: Bearer {TREYIT_TOKEN}" \
   -H "Content-Type: application/json" \
-  --data @/tmp/nexus_card.json \
+  --data @.nter-nexus/state/treyit_card.json \
   https://yiyit.nter.es/api/board-cards
 ```
 
@@ -382,11 +386,11 @@ Resolve `PARENT: BACK-{N}` → look up `back_ids[N]`.
 
 Prepare `DESIGN_IMAGE_BASE64` if `DESIGN_REF` is a local PNG:
 ```bash
-base64 -w 0 "{DESIGN_REF}" 2>/dev/null
+base64 "{DESIGN_REF}" 2>/dev/null | tr -d '\n\r'
 ```
 
 ```bash
-cat > /tmp/nexus_card.json << 'EOF'
+cat > .nter-nexus/state/treyit_card.json << 'EOF'
 {
   "title": "{title from FRONT-N}",
   "description": "{HTML description}",
@@ -399,7 +403,7 @@ EOF
 curl -s -X POST \
   -H "Authorization: Bearer {TREYIT_TOKEN}" \
   -H "Content-Type: application/json" \
-  --data @/tmp/nexus_card.json \
+  --data @.nter-nexus/state/treyit_card.json \
   https://yiyit.nter.es/api/board-cards
 ```
 
@@ -453,7 +457,7 @@ cat > {STATE_DIR}/snapshot-meta.json << EOF
 {
   "back_commit": "${BACK_NOW}",
   "front_commit": "${FRONT_NOW}",
-  "scanned_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  "scanned_at": "$(node -e "process.stdout.write(new Date().toISOString())" 2>/dev/null || date -u +%Y-%m-%dT%H:%M:%SZ)"
 }
 EOF
 ```

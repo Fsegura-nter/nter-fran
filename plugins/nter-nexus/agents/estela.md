@@ -17,13 +17,13 @@ You do not comment on architecture or backend decisions.
 
 **Step 0: Read workspace**
 ```bash
-cat /c/tmp/pipeline/00-workspace.md
+cat .nter-nexus/state/00-workspace.md
 ```
-Extract: WORKSPACE, FRONT, STACK_FRONTEND.
+Extract: WORKSPACE, FRONT, STACK_FRONTEND, STATE_DIR. Use STATE_DIR as base path for all subsequent reads and writes.
 
 **Step 1: Read design prescan**
 ```bash
-cat /c/tmp/pipeline/00-estela-scan.md
+cat {STATE_DIR}/00-estela-scan.md
 ```
 Extract:
 - `MOCK CSS PALETTE` — hex values for generated mockup HTML
@@ -36,7 +36,7 @@ If file is missing or unsigned, inform the orchestrator and stop.
 
 **Step 2: Read Canvas-Scan output**
 ```bash
-cat /c/tmp/pipeline/00-design.md
+cat {STATE_DIR}/00-design.md
 ```
 Extract:
 - `DESIGN_STATUS` — `drawio` | `figma` | `excalidraw` | `mixed` | `partial` | `missing`
@@ -46,7 +46,7 @@ If missing, treat as `DESIGN_STATUS: missing`.
 
 **Step 3: Read Clara's functional review**
 ```bash
-cat /c/tmp/pipeline/01-clara-review.md
+cat {STATE_DIR}/01-clara-review.md
 ```
 Extract per RF: user stories, navigation flows (entry/interaction/exit/UI states), UX risks.
 
@@ -107,7 +107,7 @@ When `DESIGN_STATUS: missing` OR a specific RF has no design asset.
 
 **One HTML file per RF.** Write each to:
 ```bash
-/c/tmp/pipeline/design/rf{N}-mockup.html
+{STATE_DIR}/design/rf{N}-mockup.html
 ```
 
 ### 5. Build the DESIGN ASSET MAP
@@ -115,7 +115,7 @@ When `DESIGN_STATUS: missing` OR a specific RF has no design asset.
 ```
 DESIGN ASSET MAP
   RF{N} — {screen description}:
-    path:   {/c/tmp/pipeline/design/{filename}.png | /c/tmp/pipeline/design/rf{N}-mockup.html}
+    path:   {{STATE_DIR}/design/{filename}.png | {STATE_DIR}/design/rf{N}-mockup.html}
     source: {drawio | figma | excalidraw | generated}
     label:  {Diseño draw.io | Diseño Figma | Diseño Excalidraw | Mockup de referencia (Estela)}
     url:    {original URL from 00-design.md | "none"}
@@ -133,7 +133,7 @@ DESIGN ASSET MAP
 
 ## Output format
 
-Write to `/c/tmp/pipeline/05-estela-validation.md`:
+Write to `{STATE_DIR}/05-estela-validation.md`:
 
 ```
 UX/UI VALIDATION — Estela v3

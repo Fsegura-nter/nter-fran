@@ -9,14 +9,14 @@ You do NOT validate, warn, or recommend anything. Extract and capture only.
 ## Step 0: Read workspace
 
 ```bash
-cat /c/tmp/pipeline/00-workspace.md
+cat .nter-nexus/state/00-workspace.md
 ```
 
-Extract: WORKSPACE, FRONT — use as absolute paths throughout.
+Extract: WORKSPACE, FRONT, STATE_DIR — use as absolute paths throughout.
 
 Create the design output directory:
 ```bash
-mkdir -p /c/tmp/pipeline/design
+mkdir -p {STATE_DIR}/design
 ```
 
 ---
@@ -54,7 +54,7 @@ Extract the `{fileId}` segment.
 
 Use the Drive MCP to export the file as PNG:
 - Request the file export in `image/png` format using the fileId
-- Save the result to `/c/tmp/pipeline/design/drawio-{N}.png`
+- Save the result to `{STATE_DIR}/design/drawio-{N}.png`
 
 If export fails: log the error, mark as `DESIGN_STATUS: error`, continue.
 
@@ -86,7 +86,7 @@ If the file has multiple pages, collect frames from all pages.
 Use the Figma MCP tool `download_figma_images` with:
 - `fileKey`: extracted above
 - `nodeIds`: array of frame IDs
-- `localPath`: `/c/tmp/pipeline/design/`
+- `localPath`: `{STATE_DIR}/design/`
 
 The tool will save PNG files. Note saved file paths and map them to frame names.
 
@@ -112,7 +112,7 @@ Then add 2000ms additional wait for content to fully render.
 
 Use `browser_take_screenshot` to capture the full page.
 
-Save to `/c/tmp/pipeline/design/excalidraw-{N}.png`.
+Save to `{STATE_DIR}/design/excalidraw-{N}.png`.
 
 If capture fails: log the error, mark as `DESIGN_STATUS: error`, continue.
 
@@ -127,8 +127,8 @@ If capture fails: log the error, mark as `DESIGN_STATUS: error`, continue.
 Map each captured asset to a sequential design ID:
 
 ```
-DESIGN-1 → /c/tmp/pipeline/design/{filename}.png  ← {source}: {frame name or description}
-DESIGN-2 → /c/tmp/pipeline/design/{filename}.png  ← {source}: {frame name or description}
+DESIGN-1 → {STATE_DIR}/design/{filename}.png  ← {source}: {frame name or description}
+DESIGN-2 → {STATE_DIR}/design/{filename}.png  ← {source}: {frame name or description}
 ```
 
 Determine final `DESIGN_STATUS`:
@@ -140,7 +140,7 @@ Determine final `DESIGN_STATUS`:
 
 ## Output
 
-Write complete results to `/c/tmp/pipeline/00-design.md`:
+Write complete results to `{STATE_DIR}/00-design.md`:
 
 ```
 CANVAS DESIGN SCAN
@@ -155,8 +155,8 @@ SOURCES FOUND
   Excalidraw:  {URL | "none"}
 
 FRAMES CAPTURED
-  DESIGN-1: /c/tmp/pipeline/design/{filename}.png  ← {source}: {name or description}
-  DESIGN-2: /c/tmp/pipeline/design/{filename}.png  ← {source}: {name or description}
+  DESIGN-1: {STATE_DIR}/design/{filename}.png  ← {source}: {name or description}
+  DESIGN-2: {STATE_DIR}/design/{filename}.png  ← {source}: {name or description}
   [or "none — DESIGN_STATUS: missing. Estela will generate mockups."]
 
 ERRORS (if any)

@@ -124,7 +124,10 @@ If not present, add to project `.mcp.json`:
   "mcpServers": {
     "figma": {
       "command": "npx",
-      "args": ["-y", "figma-developer-mcp", "--figma-api-key={API_KEY}", "--stdio"]
+      "args": ["-y", "figma-developer-mcp", "--stdio"],
+      "env": {
+        "FIGMA_API_KEY": "{API_KEY}"
+      }
     }
   }
 }

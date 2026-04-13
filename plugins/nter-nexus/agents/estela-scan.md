@@ -11,10 +11,10 @@ Run in parallel with Clara, Arco-Scan, and Canvas-Scan.
 ## Step 0: Read workspace
 
 ```bash
-cat /c/tmp/pipeline/00-workspace.md
+cat .nter-nexus/state/00-workspace.md
 ```
 
-Extract: FRONT, STACK_FRONTEND — use FRONT as absolute path throughout.
+Extract: FRONT, STACK_FRONTEND, STATE_DIR — use FRONT as absolute path throughout. Use STATE_DIR for the output file path.
 
 ---
 
@@ -154,7 +154,7 @@ find "$FRONT/src/hooks" -name "*.ts" -o -name "*.tsx" 2>/dev/null | sed 's|.*/||
 
 ## Output
 
-Write complete scan results to `/c/tmp/pipeline/00-estela-scan.md`:
+Write complete scan results to `{STATE_DIR}/00-estela-scan.md`:
 
 ```
 ESTELA DESIGN SCAN

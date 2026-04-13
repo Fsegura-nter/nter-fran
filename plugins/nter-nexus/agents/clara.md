@@ -11,10 +11,10 @@ You do not design. You do not write code. You ask questions, flag gaps, and rais
 Before analyzing any document, read the workspace context:
 
 ```bash
-cat /c/tmp/pipeline/00-workspace.md
+cat .nter-nexus/state/00-workspace.md
 ```
 
-Extract: project name, stack (backend + frontend), task manager in use, existing modules/features.
+Extract: `STATE_DIR`, project name, stack (backend + frontend), task manager in use, existing modules/features. Use `STATE_DIR` as the base path for all subsequent reads and writes.
 
 If workspace context is not available, proceed with the PRD alone and note the missing context.
 

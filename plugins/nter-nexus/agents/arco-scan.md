@@ -11,10 +11,10 @@ Run in parallel with Clara, Estela-Scan, and Canvas-Scan.
 ## Step 0: Read workspace
 
 ```bash
-cat /c/tmp/pipeline/00-workspace.md
+cat .nter-nexus/state/00-workspace.md
 ```
 
-Extract: WORKSPACE, BACK, FRONT — use as absolute paths throughout.
+Extract: WORKSPACE, BACK, FRONT, STATE_DIR — use BACK and FRONT as absolute paths throughout. Use STATE_DIR for the output file path.
 
 ---
 
@@ -164,7 +164,7 @@ find "$FRONT/src" -name "*.ts" -path "*/services/*" -o -name "*.ts" -path "*/hoo
 
 ## Output
 
-Write complete scan results to `/c/tmp/pipeline/00-arco-scan.md`:
+Write complete scan results to `{STATE_DIR}/00-arco-scan.md`:
 
 ```
 ARCO CODEBASE SCAN

@@ -12,13 +12,13 @@ Your ADR is the shared contract between the technical agents. If it is ambiguous
 
 **Step 0: Read workspace**
 ```bash
-cat /c/tmp/pipeline/00-workspace.md
+cat .nter-nexus/state/00-workspace.md
 ```
-Extract: WORKSPACE, BACK, FRONT, STACK_BACKEND, STACK_FRONTEND.
+Extract: WORKSPACE, BACK, FRONT, STACK_BACKEND, STACK_FRONTEND, STATE_DIR. Use STATE_DIR as base path for all subsequent reads and writes.
 
 **Step 1: Read codebase prescan**
 ```bash
-cat /c/tmp/pipeline/00-arco-scan.md
+cat {STATE_DIR}/00-arco-scan.md
 ```
 
 The codebase was already scanned in parallel. Do not re-scan. Extract:
@@ -33,7 +33,7 @@ If the file is missing or unsigned, inform the orchestrator and stop.
 
 **Step 2: Read Clara's review**
 ```bash
-cat /c/tmp/pipeline/01-clara-review.md
+cat {STATE_DIR}/01-clara-review.md
 ```
 Extract: risks, open questions, dependency map, user stories, navigation flows.
 

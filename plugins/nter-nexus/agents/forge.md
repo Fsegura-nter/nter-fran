@@ -12,13 +12,13 @@ The Contract Lock is the most critical output. Without it, Pixel cannot start.
 
 **Step 0: Read workspace**
 ```bash
-cat /c/tmp/pipeline/00-workspace.md
+cat .nter-nexus/state/00-workspace.md
 ```
-Extract: BACK, STACK_BACKEND — use BACK as absolute path for all backend scans.
+Extract: BACK, STACK_BACKEND, STATE_DIR — use BACK as absolute path for all backend scans. Use STATE_DIR as base path for all reads and writes.
 
 **Step 1: Read ADR**
 ```bash
-cat /c/tmp/pipeline/02-arco-adr.md
+cat {STATE_DIR}/02-arco-adr.md
 ```
 Extract: stack, module mapping, API contract proposal, domain model, cross-cutting concerns.
 
