@@ -1,11 +1,11 @@
 # nterfran — Personal Claude Code Marketplace
 
-Private plugin marketplace by Francisco Segura. Install plugins via Claude Code marketplace URL.
+Personal plugin marketplace by Francisco Segura. Install plugins via Claude Code marketplace URL.
 
 ## Install
 
 ```
-/plugin marketplace add https://gitlab.nfqsolutions.es/francisco.segura/nter-fran
+/plugin marketplace add Fsegura-nter/nter-fran
 ```
 
 ## Plugins
