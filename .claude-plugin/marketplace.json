@@ -32,6 +32,19 @@
       "category": "utilities",
       "tags": ["utilities", "dashboard", "usage"],
       "keywords": ["claude-usage", "dashboard", "utilities"]
+    },
+    {
+      "name": "glados-starter",
+      "source": { "source": "github", "repo": "Fsegura-nter/glados-starter" },
+      "description": "Interviews you, reads your real work, and generates a console-first markdown vault with its own personality, hooks, search and backups.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Francisco Segura",
+        "url": "https://github.com/Fsegura-nter/glados-starter"
+      },
+      "category": "productivity",
+      "tags": ["vault", "onboarding", "knowledge", "bootstrap"],
+      "keywords": ["vault", "second-brain", "onboarding", "hooks", "rag"]
     }
   ]
 }
